@@ -1,0 +1,11 @@
+.alert-btn{
+    background: #A02 !important;
+    font-weight: 700;
+    border-color: #730d08 !important;
+    color: #fff !important;
+}
+.alert-btn:hover{
+    background: #C02 !important;
+    font-weight: 700;
+    color: #fff ;
+}
