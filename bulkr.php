@@ -143,7 +143,6 @@ $all_redirectshere = $GLOBALS['bulk_redirectsplugins']->getAll();
 if($all_redirectshere){
     foreach($all_redirectshere as $redirect_id){
         $la_redirect = $GLOBALS['bulk_redirectsplugins']->getFields($redirect_id);
-
         if (strpos(bulkr_getUrl_(),$_SERVER["HTTP_HOST"].'/'.$la_redirect['the_link']) !== false){
             header("Location: " . $siteurl , true, 301);
             die();
