@@ -13,7 +13,7 @@ function load_bulkrsection_assets($adminpage)
 {
 	//if ($adminpage == 'settings_page_bulkr_unique_slug')
 	//{
-        wp_enqueue_style( 'bootstyle', plugin_dir_url( __FILE__ ) . 'bootstrap-3.3.4.css', false, '1.0.0' );
+        //wp_enqueue_style( 'bootstyle', plugin_dir_url( __FILE__ ) . 'bootstrap-3.3.4.css', false, '1.0.0' );
         wp_enqueue_style( 'style', plugin_dir_url( __FILE__ ) . 'style.css', false, '1.0.0' );
 	    wp_enqueue_style( 'bootstrap-3.3.4', plugin_dir_url( __FILE__ ) . 'bootstrap-3.3.4.js', array(), '1.0.0', true );
 	//}
@@ -44,7 +44,9 @@ function my_bulkr_plugin_options() {
            if($error == 55){ print_r('<large>Cant end on a comma or contain blanks!</large>');}
            if($error == 56){ print_r('cant have bnalks!!!');}
            $the_link = $_POST['action'];
-           $redirects->edit($the_link);
+           if($the_link != '' && $the_link != '/'){
+            $redirects->edit($the_link);
+           }
         }
         if($_POST['_bulkr_del_redirects']){
             //$error = bulkr_update_value($_POST['action']);
@@ -143,6 +145,7 @@ $all_redirectshere = $GLOBALS['bulk_redirectsplugins']->getAll();
 if($all_redirectshere){
     foreach($all_redirectshere as $redirect_id){
         $la_redirect = $GLOBALS['bulk_redirectsplugins']->getFields($redirect_id);
+        if($la_redirect['the_link'] == '')return;
         if (strpos(bulkr_getUrl_(),$_SERVER["HTTP_HOST"].'/'.$la_redirect['the_link']) !== false){
             header("Location: " . $siteurl , true, 301);
             die();
