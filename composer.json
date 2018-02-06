@@ -1,6 +1,6 @@
 {
   "name": "nicholasmole/bulkr",
-  "version" : "1.1.0",
+  "version" : "1.4.0",
   "description": "Bulk Redirects - moves extra calls to the homepage",
   "type": "wordpress-plugin",
   "authors": [
